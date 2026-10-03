@@ -432,6 +432,11 @@ p {
   .lang-chevron { display: block; }
 }
 
+/* En pantallas muy angostas basta con la bandera. */
+@media (max-width: 359px) {
+  .lang summary > span { display: none; }
+}
+
 .nav {
   display: none;
   gap: 32px;
@@ -845,6 +850,61 @@ p {
     bottom: 28px;
     width: 150px;
     margin: 0 !important;
+  }
+}
+
+.dish--full {
+  grid-column: 1 / -1;
+}
+
+.dish--lunch {
+  border-color: transparent;
+  background: var(--mustard);
+}
+
+.dish--lunch p,
+.dish--lunch .dish-tag {
+  color: var(--ink);
+}
+
+.lunch-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 6px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.lunch-options li {
+  padding: 0.45em 1em;
+  border: 1.5px solid var(--ink);
+  border-radius: 999px;
+  background: var(--paper);
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+@media (min-width: 900px) {
+  .dish--lunch {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      "tag tag"
+      "title options"
+      "text options";
+    align-items: center;
+    column-gap: 48px;
+  }
+
+  .dish--lunch .dish-tag { grid-area: tag; }
+  .dish--lunch h3 { grid-area: title; }
+  .dish--lunch > p:not(.dish-tag) { grid-area: text; max-width: 30rem; }
+
+  .dish--lunch .lunch-options {
+    grid-area: options;
+    justify-content: flex-end;
+    margin: 0;
   }
 }
 
